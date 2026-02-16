@@ -1,4 +1,4 @@
-#Reflection#
+# Reflection
 Team with mutual respect that is able to provide constructive feedback creates asecure environment encourages members to share ideas, admit mistakes, and take risks without fear. Open and clear communicationensures everyone is informed, reducing misunderstandings.
 
 *Steps to make your communication clear, respectful, and inclusive*
