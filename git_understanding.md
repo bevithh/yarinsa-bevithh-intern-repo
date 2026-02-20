@@ -26,4 +26,4 @@ PRs are the bridge between individual work and the main project. They act as a q
 A well-structured PR is easy for a reviewer to understand. It needs a clear title, a brief summary of what changed, and a mention of why the change was made. Keeping PRs small and focused on a single task makes them much faster to review and approve.
 
 *What did you learn from reviewing an open-source PR?*
-Reviewing a public PR (like on the React or VS Code repos) showed me how developers use comments to ask helpful questions instead of just pointing out mistakes. It taught me that the goal of a PR is to make the code better as a team, not just to prove that the code works.
+Reviewing a public PR (like on the React or VS Code repos) showed me how developers use comments to ask helpful questions instead of just pointing out mistakes. It taught me that the goal of a PR is to make the code better as a team, not just to prove that the code works. 
