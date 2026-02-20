@@ -27,3 +27,5 @@ A well-structured PR is easy for a reviewer to understand. It needs a clear titl
 
 *What did you learn from reviewing an open-source PR?*
 Reviewing a public PR (like on the React or VS Code repos) showed me how developers use comments to ask helpful questions instead of just pointing out mistakes. It taught me that the goal of a PR is to make the code better as a team, not just to prove that the code works. 
+
+this sentence is for issue #61
