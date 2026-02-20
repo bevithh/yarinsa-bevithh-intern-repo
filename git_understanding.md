@@ -29,3 +29,13 @@ A well-structured PR is easy for a reviewer to understand. It needs a clear titl
 Reviewing a public PR (like on the React or VS Code repos) showed me how developers use comments to ask helpful questions instead of just pointing out mistakes. It taught me that the goal of a PR is to make the code better as a team, not just to prove that the code works. 
 
 this sentence is for issue #61
+
+# Reflection 3.2
+*What makes a good commit message?*
+A good commit message is short, clear, and written in the imperative mood (e.g., Fix bug instead of Fixed bug). It usually starts with a category like feat: for new features, fix: for bug fixes, or docs: for documentation updates. This makes the history easy to scan at a glance.
+
+*How does a clear commit message help in team collaboration?*
+It acts as a map for the team. When a teammate looks at the project history, they can quickly understand what changes were made without having to read every line of code. It also makes Pull Requests much easier to review because the intent of each change is clear.
+
+*How can poor commit messages cause issues later?*
+Poor messages like fixed stuff or final fix make it impossible to use tools like git blame or git log effectively. If a bug is discovered weeks later, a vague history makes it very difficult to track down exactly when and why the breaking change was introduced, leading to hours of wasted debugging time.
