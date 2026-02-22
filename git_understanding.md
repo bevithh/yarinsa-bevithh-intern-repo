@@ -82,3 +82,17 @@ Branches allow for isolated code reviews. Using a Pull Request, teammates can co
 
 ### Handling simultaneous edits (Merge Conflicts)
 If two people edit the same file, Git triggers a 'Merge Conflict.' It doesn't pick a winner automatically; instead, it asks the developers to manually choose which changes to keep. This ensures that no one's work is accidentally overwritten.
+
+## 3.6 Staging vs. Committing
+
+### What is the difference?
+Staging is the act of preparing specific changes for a save, while committing is the act of actually creating that permanent save point in the project history. Staging is temporary and flexible; committing is formal and documented.
+
+### Why does Git separate these two steps?
+Git separates them to give developers control. It allows you to review your work and group related changes together. Without a staging area, every single tiny change you made would have to be saved at once, which makes for a messy project history.
+
+### When would you stage without committing?
+You might stage changes when:
+1. **Selective Commits:** You modified three files, but only two of them are related to a specific bug fix. You stage those two, commit them, and then handle the third file separately.
+2. **Reviewing:** You stage files as you finish parts of a task to keep track of what is "done" versus what you are still working on in the directory.
+3. **Safety:** Staging acts as a "draft" save point before you commit to a final message.
