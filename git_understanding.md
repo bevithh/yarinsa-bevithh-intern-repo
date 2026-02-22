@@ -18,7 +18,6 @@ I resolved the conflict locally using **VS Code**.
 * **Communication is Key:** In a real backend environment, I learned that before resolving a conflict, I should check with my team members to ensure I’m not overwriting critical logic.
 * **Pull Frequently:** To minimize large conflicts, it’s best to pull changes from `main` often so that my local branch stays closely aligned with the team's progress.
 
-<<<<<<< HEAD
 # 3.3 Reflection
 **What does git bisect do?**
 git bisect is a debugging tool that uses a binary search to find the exact commit that introduced a bug. By marking a "good" version and a "bad" version, Git automatically checks out the middle commits for you to test, narrowing down the culprit quickly.
@@ -50,4 +49,4 @@ It acts as a map for the team. When a teammate looks at the project history, the
 
 *How can poor commit messages cause issues later?*
 Poor messages like fixed stuff or final fix make it impossible to use tools like git blame or git log effectively. If a bug is discovered weeks later, a vague history makes it very difficult to track down exactly when and why the breaking change was introduced, leading to hours of wasted debugging time.
->>>>>>> a12f287129c4fcd138bbcec2fac837d713ba8f81
+
