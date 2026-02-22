@@ -50,3 +50,35 @@ It acts as a map for the team. When a teammate looks at the project history, the
 *How can poor commit messages cause issues later?*
 Poor messages like fixed stuff or final fix make it impossible to use tools like git blame or git log effectively. If a bug is discovered weeks later, a vague history makes it very difficult to track down exactly when and why the breaking change was introduced, leading to hours of wasted debugging time.
 
+# 3.4 Git Command Reflections
+
+## 1. git checkout main -- <file>
+- **What it does:** Restores a specific file to the state it is in on the main branch.
+- **Project Use:** Perfect for "undoing" mistakes in a specific file without needing to revert the entire project or branch.
+- **Surprise:** I was surprised that it doesn't just show me the file; it actively overwrites my local changes immediately.
+
+## 2. git cherry-pick <commit-hash>
+- **What it does:** Copies a specific commit from one branch to another.
+- **Project Use:** Great for pulling emergency fixes from a development branch into production without bringing along unfinished features.
+- **Surprise:** It creates a brand new commit hash on the current branch, even though the content is identical to the source.
+
+## 3. git log
+- **What it does:** Displays the history of commits.
+- **Project Use:** Essential for tracking progress and finding specific points in time to revert to.
+- **Surprise:** I didn't realize how much info is stored here—dates, emails, and full hashes. Using `git log --oneline` makes it much easier to read!
+
+## 4. git blame <file>
+- **What it does:** Shows which user changed which line of a file and when.
+- **Project Use:** Helps identify the right person to ask about a specific piece of logic.
+- **Surprise:** It’s actually very helpful for finding the *commit message* associated with a specific line, not just the person's name.
+
+## 3.5 Branching & Workflow Reflections
+
+### Why avoid pushing directly to main?
+Pushing to main is risky because it can introduce bugs into the stable version of the project. It forces the whole team to deal with your "work in progress," which can stall development if the build breaks.
+
+### The benefit of branches for code review
+Branches allow for isolated code reviews. Using a Pull Request, teammates can comment on specific lines of code and suggest improvements before that code ever touches the production-ready main branch.
+
+### Handling simultaneous edits (Merge Conflicts)
+If two people edit the same file, Git triggers a 'Merge Conflict.' It doesn't pick a winner automatically; instead, it asks the developers to manually choose which changes to keep. This ensures that no one's work is accidentally overwritten.
