@@ -342,3 +342,13 @@ Tests act as a "living specification." They prevent Regression (where fixing one
 
 **What issues did you find while testing?**
 You might notice that a function relies on a global variable or a database connection, making it "impure" and hard to test. This usually signals that the function needs to be refactored to accept those dependencies as arguments instead.
+
+# 4.10 Code Formatting & Style Guides
+**Why is code formatting important?**
+It eliminates "bike-shedding" (arguing over minor details). It ensures the codebase remains professional and uniform, which is critical for scaling backend systems.
+
+**What issues did the linter detect?**
+Common ones include unused variables, missing semicolons, or shadowing variables (using the same name for a variable in a nested scope).
+
+**Did formatting the code make it easier to read?**
+Focus on the "vertical rhythm." Prettier often breaks long lines into multiple lines, making logic easier to scan without scrolling horizontally.

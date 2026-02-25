@@ -1,7 +1,9 @@
 # Which tool you used
+
 I installed Cursor, which is an AI-powered fork of VS Code.
 
 # What you used it for
+
 Understanding Logic: I used the @Codebase chat feature to ask questions about how my project's backend modules are connected.
 Interactive Debugging: I used the chat to feed the AI my error logs and then worked with it to fix the issues. I found that I often had to help the AI debug by providing more context about my local setup and specific logic it didn't catch at first.
 

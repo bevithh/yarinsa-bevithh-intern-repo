@@ -22,13 +22,11 @@ I work best in a team when everyone is being productive
 My biggest pet peeve in teamwork is coming to work sick
 If I seem quiet in a meeting, it usually means I'm focusing
 
-
 ## Focus & Productivity
 
 I stay focused by listening to piano background music
-Things that distract me: music that I know all the lyrics to  word by word...
+Things that distract me: music that I know all the lyrics to word by word...
 The best way to support my productivity is keeping the environment productive
-
 
 ## Feedback & Growth
 

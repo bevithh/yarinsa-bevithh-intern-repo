@@ -9,13 +9,12 @@ I always check the sender email addresses before I reply or click the attached l
 4.Learn and understand the casue, danger, and consequences of risking what should've been prepared.
 
 **Steps to ensure your passwords and accounts are secure**
-1.Creating a strong password. A strong password is: At least 12 characters long but 14 or more is better. A combination of uppercase letters, lowercase letters, numbers, and symbols.
-2. Don't use same password on multiple sites.
+1.Creating a strong password. A strong password is: At least 12 characters long but 14 or more is better. A combination of uppercase letters, lowercase letters, numbers, and symbols. 2. Don't use same password on multiple sites.
 3.If you do shared same password across many sites, change that immediately.
 4.Use password manager.
 5.Don't share our passwords and personal credentials with non trustworthy individuals.
 
 **If you suspected a security breach or suspicious activity**
-Change all compromised passwords, contact financial institutions to freeze accounts/cards, and enable multi-factor authentication. Report the incident to relevant authorities and monitor accounts for further unauthorized activity. 
+Change all compromised passwords, contact financial institutions to freeze accounts/cards, and enable multi-factor authentication. Report the incident to relevant authorities and monitor accounts for further unauthorized activity.
 
 I monitor spams and verify the sender addresses before reponse to anything Focus Bear related.

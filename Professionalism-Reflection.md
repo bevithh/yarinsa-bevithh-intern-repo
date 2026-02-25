@@ -1,7 +1,8 @@
 # Reflection
+
 Team with mutual respect that is able to provide constructive feedback creates asecure environment encourages members to share ideas, admit mistakes, and take risks without fear. Open and clear communicationensures everyone is informed, reducing misunderstandings.
 
-*Steps to make your communication clear, respectful, and inclusive*
+_Steps to make your communication clear, respectful, and inclusive_
 1.Be concise and direct
 2.Check for understanding
 3.Active listening
@@ -11,23 +12,23 @@ Team with mutual respect that is able to provide constructive feedback creates a
 7.Acknowledge mistake
 8.Solicit feedback
 
-*How to create a positive, fun, and professional work environment*
+_How to create a positive, fun, and professional work environment_
 1.Engage in meaningful (in-person) dialog
 2.Show your appreciation
 3.Listen to everyone's ideas
 4.Trust your team members
 5.Be spontaneous and have a little fun
 
-*How to prepare effectively for meetings with supervisors and colleagues?*
+_How to prepare effectively for meetings with supervisors and colleagues?_
 Setting a clear purpose, creating a structured agenda, and proactively preparing topics to discuss, such as project updates, challenges, and career development goals
 
-*How to be proactive in an internship?*
+_How to be proactive in an internship?_
 Taking a proactive approach by seeking feedback on your work demonstrates your commitment to progress and improvement.
 
-*How to follow up*
-Clear communication, moves to different channels if ignored, and eventually escalates to management if deadlines are missed, using documentation to justify the action. 
+_How to follow up_
+Clear communication, moves to different channels if ignored, and eventually escalates to management if deadlines are missed, using documentation to justify the action.
 
-*Don't*
+_Don't_
 show up late
 check your phone in a meeting
 dress inappropriately

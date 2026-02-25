@@ -3,7 +3,7 @@
 My Role: Backend Intern
 My primary responsibility is to build, maintain, and test the server-side logic, databases, and APIs that power the application.
 
-*How You Contribute to the Agile Process*
+_How You Contribute to the Agile Process_
 
 Sprint Planning: provide "story point" estimates on how difficult a backend task is.
 Daily Stand-up: briefly share what you I yesterday, what I'm doing today, and if I have any "blockers".
