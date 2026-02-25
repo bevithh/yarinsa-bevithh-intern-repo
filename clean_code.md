@@ -141,3 +141,44 @@ def get_user_report(username, score, total_possible):
     
     return format_report_string(username, percent, result_status)
 ```
+
+# 4.4 Don't Repeat Yourself (DRY)
+
+## Research: The DRY Principle
+The DRY principle is about reducing repetition. Instead of having the same logic scattered across multiple places, you consolidate it into a single function or class.
+
+* **Maintainability:** If the logic needs to change, you only update it in one place.
+* **Bug Reduction:** Having multiple versions of the same code increases the chance that one version will be forgotten during an update.
+* **Efficiency:** Clean, non-repetitive code is faster to read and easier for new developers to understand.
+
+---
+
+## 4.4 Refactoring Example
+
+### Repetitive Code (The "Before")
+Issues: The greeting logic is duplicated for every time of day. If I wanted to change "Hello" to "Welcome," I would have to edit three different lines.
+
+```python
+def greet_user(name, time_of_day):
+    if time_of_day == "morning":
+        print(f"Hello, {name}! Good morning.")
+    elif time_of_day == "afternoon":
+        print(f"Hello, {name}! Good afternoon.")
+    elif time_of_day == "evening":
+        print(f"Hello, {name}! Good evening.")
+```
+
+Refactored Code (The "After")
+
+Improvements: Extracted the repetitive greeting string into a single line. The code is now "DRY."
+```python
+def greet_user(name, time_of_day):
+    # The greeting logic is now defined only once
+    greeting = f"Hello, {name}! Good {time_of_day}."
+    print(greeting)
+```
+**What were the issues with duplicated code?**
+Duplicated code makes the file longer than it needs to be and creates a maintenance headache. If the greeting format needed to change (e.g., adding an exclamation mark), I would have had to make the same change in three different places, increasing the risk of a typo.
+
+**How did refactoring improve maintainability?**
+Refactoring simplified the function and made it more flexible. Now, if the team decides to support a new time of day like "night," I don't need to add a whole new elif block with a repeated print statement; the existing logic already handles it.
