@@ -199,3 +199,68 @@ Comments should be added when the logic is non-intuitive or involves a specific 
 
 **When should you avoid comments and instead improve the code?**
 If you feel the need to explain what a variable represents or what a simple loop is doing, you should usually rename the variable or extract the loop into a well-named function instead. "Code should tell you how; comments should tell you why."
+
+# 4.6 Handling Errors & Edge Cases
+A **Guard Clause** is a snippet of code at the beginning of a function that checks for invalid conditions and exits immediately. This avoids "Arrow Code" (deeply nested if statements) and keeps the "happy path" of your logic at the lowest indentation level.
+
+**Strategies for Edge Cases:**
+
+Null/Undefined Checks: Always assume an input might be missing.
+
+Type Validation: Ensure numbers are actually numbers and strings aren't empty.
+
+Range Validation: If a function calculates age, ensure the input isn't -5 or 200.
+
+Try-Catch Blocks: Use these for operations that are outside your control, like API calls or file system access.
+
+**The Original (Brittle) Code**
+
+This function assumes the input is always perfect. If prices is null or empty, it crashes.
+
+```C#
+public double CalculateAveragePrice(List<double> prices)
+{
+    double total = 0;
+    foreach (var price in prices)
+    {
+        total += price;
+    }
+    return total / prices.Count; // Potential Division by Zero error!
+}
+```
+**The Refactored (Robust) Code**
+
+Using Guard Clauses and input validation:
+
+```C#
+public double CalculateAveragePrice(List<double> prices)
+{
+    // Guard Clause: Check for null
+    if (prices == null)
+    {
+        throw new ArgumentNullException(nameof(prices), "Price list cannot be null.");
+    }
+
+    // Guard Clause: Check for empty list to avoid Division by Zero
+    if (prices.Count == 0)
+    {
+        return 0;
+    }
+
+    double total = 0;
+    foreach (var price in prices)
+    {
+        // Edge Case: Negative prices don't make sense in this context
+        if (price < 0) continue; 
+        
+        total += price;
+    }
+
+    return total / prices.Count;
+}
+```
+**What was the issue with the original code?**
+The original code lacked "defensive programming." It operated on the "happy path" assumption. If the data source failed or returned an empty set, the application would throw an unhandled exception (like DivideByZeroException), potentially crashing the entire service.
+
+**How does handling errors improve reliability?**
+It makes the system predictable. Instead of a crash, the system provides a meaningful error message or a safe default value. This ensures that one small failure in a minor function doesn't cascade into a total system failure.
