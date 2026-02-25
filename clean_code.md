@@ -182,3 +182,20 @@ Duplicated code makes the file longer than it needs to be and creates a maintena
 
 **How did refactoring improve maintainability?**
 Refactoring simplified the function and made it more flexible. Now, if the team decides to support a new time of day like "night," I don't need to add a whole new elif block with a repeated print statement; the existing logic already handles it.
+
+# 4.5 Comments & Documentation
+
+## Research: Best Practices
+Comments should be used sparingly. The primary goal is to write code so clear that it documents itself, using comments only to provide context that the code cannot.
+
+* **The 'Why', not the 'What':** Comments should explain the reasoning behind a complex logic block, not describe the syntax.
+* **Docstrings:** Use high-level documentation at the start of functions to describe parameters and return values.
+* **Avoid Noise:** Don't add comments that restate the obvious.
+* **Todo Comments:** Use `TODO:` to mark areas that need future improvement or refactoring.
+
+---
+**When should you add comments?**
+Comments should be added when the logic is non-intuitive or involves a specific business rule that isn't obvious. They are also helpful for marking temporary workarounds or complex mathematical formulas.
+
+**When should you avoid comments and instead improve the code?**
+If you feel the need to explain what a variable represents or what a simple loop is doing, you should usually rename the variable or extract the loop into a well-named function instead. "Code should tell you how; comments should tell you why."
