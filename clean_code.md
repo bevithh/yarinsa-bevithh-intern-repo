@@ -264,3 +264,64 @@ The original code lacked "defensive programming." It operated on the "happy path
 
 **How does handling errors improve reliability?**
 It makes the system predictable. Instead of a crash, the system provides a meaningful error message or a safe default value. This ensures that one small failure in a minor function doesn't cascade into a total system failure.
+
+# 4.7 Refactoring Code for Simplicity
+**The "Before" (Overly Complicated)**
+
+This code is hard to read because of "Arrow Code" (heavy nesting) and unclear logic.
+
+```C#
+public decimal GetDiscount(Customer customer, decimal price)
+{
+    decimal result = 0;
+    if (customer != null)
+    {
+        if (customer.IsSilverMember)
+        {
+            if (price > 100)
+            {
+                result = price * 0.1m;
+            }
+            else
+            {
+                result = price * 0.05m;
+            }
+        }
+        else if (customer.IsGoldMember)
+        {
+            result = price * 0.2m;
+        }
+    }
+    return result;
+}
+```
+**The "After" (Refactored)**
+
+We use Guard Clauses and Extract Method logic to make it readable at a glance.
+
+```C#
+public decimal GetDiscount(Customer customer, decimal price)
+{
+    // Guard Clause
+    if (customer == null) return 0;
+
+    if (customer.IsGoldMember) return price * 0.2m;
+    
+    if (customer.IsSilverMember)
+    {
+        return CalculateSilverDiscount(price);
+    }
+
+    return 0;
+}
+
+private decimal CalculateSilverDiscount(decimal price)
+{
+    return price > 100 ? price * 0.1m : price * 0.05m;
+}
+```
+**What made the original code complex?**
+The original code suffered from Deep Nesting. To understand the result, a developer had to keep track of four different levels of if statements simultaneously. It also used "Magic Numbers" (like 0.1m) without context, making the business logic opaque.
+
+**How did refactoring improve it?**
+Refactoring reduced the Cyclomatic Complexity. By using Guard Clauses, the "happy path" is clear and flat. By extracting logic into smaller methods, the code now "reads like a book," where the method names explain what is happening before you even look at the math.
