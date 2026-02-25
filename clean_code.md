@@ -35,12 +35,13 @@ def proc(d, v):
                 return v
     else:
         return 0
-
+```
 Clean Code (The "After")
 
 Improvements: Used Guard Clauses to remove nesting and Constants to explain the numbers.
 
 # Constants make the logic easy to adjust later
+```python
 DISCOUNT_RATE = 0.05
 THRESHOLD = 100
 
@@ -56,6 +57,7 @@ def calculate_discounted_total(customer_type, total_amount):
         return total_amount - 10
 
     return total_amount
+```
 
 
 ## 4.2 Variable & Function Naming
@@ -107,11 +109,12 @@ def get_user_report(username, score, total_possible):
 
     # Formatting
     return f"User: {username} | Score: {percentage}% | Result: {status}"
+```
 
 2. The Refactored Functions (After)
 
 Improvements: Decomposed into modular tools. Each piece can now be tested or reused independently.
-
+```python
 def calculate_percentage(score, total):
     """Handles the math only."""
     return (score / total) * 100
@@ -137,3 +140,4 @@ def get_user_report(username, score, total_possible):
     result_status = determine_status(percent)
     
     return format_report_string(username, percent, result_status)
+```
