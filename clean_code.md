@@ -336,3 +336,9 @@ By removing nesting, the "happy path" (the successful execution of the code) is 
 **How does avoiding smells make debugging easier?**
 When code is modular and clean, the scope of a bug is smaller. If a calculation is wrong, you look at the one TaxCalculator class rather than searching through five different files for duplicate logic.
 
+# 4.9 Writing Unit Tests for Clean Code
+**How do unit tests help keep code clean?**
+Tests act as a "living specification." They prevent Regression (where fixing one bug creates another). Because tests require you to pass specific inputs into a function, they naturally discourage "God Objects" and encourage Single Responsibility.
+
+**What issues did you find while testing?**
+You might notice that a function relies on a global variable or a database connection, making it "impure" and hard to test. This usually signals that the function needs to be refactored to accept those dependencies as arguments instead.
