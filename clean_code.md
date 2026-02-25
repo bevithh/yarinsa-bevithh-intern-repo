@@ -325,3 +325,14 @@ The original code suffered from Deep Nesting. To understand the result, a develo
 
 **How did refactoring improve it?**
 Refactoring reduced the Cyclomatic Complexity. By using Guard Clauses, the "happy path" is clear and flat. By extracting logic into smaller methods, the code now "reads like a book," where the method names explain what is happening before you even look at the math.
+
+# 4.8 Identifying and fixing code smells
+**What smells did you find?**
+Focus on Deeply Nested Conditionals and Magic Numbers. These are the most common "internship-level" smells that clutter backend logic.
+
+**How did refactoring improve readability?**
+By removing nesting, the "happy path" (the successful execution of the code) is now easy to follow from top to bottom. Replacing magic numbers with constants explains the intent (the "why") rather than just the "how."
+
+**How does avoiding smells make debugging easier?**
+When code is modular and clean, the scope of a bug is smaller. If a calculation is wrong, you look at the one TaxCalculator class rather than searching through five different files for duplicate logic.
+
