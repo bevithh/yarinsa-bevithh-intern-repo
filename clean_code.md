@@ -88,7 +88,7 @@ Best practices for writing "clean" functions revolve around the **Single Respons
 ## Refactoring Example
 
 ### 1. The "Complex" Function (Before)
-> **Issues:** This function is hard to test because it does everything: it calculates math, formats a string, and handles errors. If you only wanted to test the math, you'd still have to deal with the string formatting.
+> **Issues:** Hard to test because it calculates math, formats strings, and handles errors in one block.
 
 ```python
 def get_user_report(username, score, total_possible):
@@ -108,12 +108,10 @@ def get_user_report(username, score, total_possible):
     # Formatting
     return f"User: {username} | Score: {percentage}% | Result: {status}"
 
-### 2. The Refactored Functions (After)
-> **Improvements:** The logic is now "decomposed" into small, specialized tools. This makes the code **modular**—meaning each piece can stand on its own.
+2. The Refactored Functions (After)
 
+Improvements: Decomposed into modular tools. Each piece can now be tested or reused independently.
 
-
-```python
 def calculate_percentage(score, total):
     """Handles the math only."""
     return (score / total) * 100
