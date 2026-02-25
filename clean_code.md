@@ -72,3 +72,70 @@ def calculate_discounted_total(customer_type, total_amount):
 
 ### Reflection on Refactoring
 Refactoring the code by renaming variables immediately made the logic "obvious." I no longer had to look at the math (`a * b`) to guess what the function did; the name `calculate_area` told me everything I needed to know before I even read the body of the function.
+
+# 4.3 Function Structure & Responsibility
+
+## Research: Single-Purpose Functions
+Best practices for writing "clean" functions revolve around the **Single Responsibility Principle (SRP)**.
+
+* **Do One Thing:** A function should have one reason to change. If it validates data, calculates a result, and saves to a database, it is doing too much.
+* **Small is Better:** Ideally, a function should be visible on your screen without scrolling. This usually means keeping it under 20 lines.
+* **Single Level of Abstraction:** Don't mix high-level business logic (e.g., `apply_seasonal_discount`) with low-level details (e.g., `round(price * 0.9, 2)`).
+* **Descriptive Naming:** When a function does only one thing, it is much easier to give it a precise name like `validate_email_format` instead of `handle_data`.
+
+---
+
+## Refactoring Example
+
+### 1. The "Complex" Function (Before)
+> **Issues:** This function is hard to test because it does everything: it calculates math, formats a string, and handles errors. If you only wanted to test the math, you'd still have to deal with the string formatting.
+
+```python
+def get_user_report(username, score, total_possible):
+    # Validation
+    if not username:
+        return "Error: Invalid user"
+
+    # Calculation
+    percentage = (score / total_possible) * 100
+    
+    # Logic for status
+    if percentage >= 50:
+        status = "Passed"
+    else:
+        status = "Failed"
+
+    # Formatting
+    return f"User: {username} | Score: {percentage}% | Result: {status}"
+
+### 2. The Refactored Functions (After)
+> **Improvements:** The logic is now "decomposed" into small, specialized tools. This makes the code **modular**—meaning each piece can stand on its own.
+
+
+
+```python
+def calculate_percentage(score, total):
+    """Handles the math only."""
+    return (score / total) * 100
+
+def determine_status(percentage):
+    """Handles the business logic for passing/failing."""
+    return "Passed" if percentage >= 50 else "Failed"
+
+def format_report_string(name, percent, status):
+    """Handles the final presentation."""
+    return f"User: {name} | Score: {percent}% | Result: {status}"
+
+def get_user_report(username, score, total_possible):
+    """
+    The 'Orchestrator' function. 
+    It doesn't do the math itself; it just manages the flow.
+    """
+    if not username:
+        return "Error: Invalid user"
+
+    # We call our small, single-purpose functions here
+    percent = calculate_percentage(score, total_possible)
+    result_status = determine_status(percent)
+    
+    return format_report_string(username, percent, result_status)
