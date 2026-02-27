@@ -4,7 +4,7 @@ _How to adjust your communication style to be more inclusive of neurodivergent u
 Moving away from relying on implicit social cues, indirect language, and rigid, fast-paced interaction styles.
 Focus on clarity, directness, and flexibility to ensure information is accessible and comfortable for all cognitive types.
 
-_Some common UX or communication pitfalls that might make Focus Bear less accessible or supportive_
+## Some common UX or communication pitfalls that might make Focus Bear less accessible or supportive
 
 - Aggressive onboarding: Immediately blocking app switching upon signup without a "default/nothing" state can overwhelm users.
 - Intrusive "Strict Mode" and Limited Flexibility: "strict mode" can create anxiety if a user cannot easily pause for a legitimate distraction or emergency.
