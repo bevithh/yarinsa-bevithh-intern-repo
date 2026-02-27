@@ -1,0 +1,19 @@
+name: Lint and Spell Check
+on: [pull_request] # This tells GitHub: "Run this every time a PR is opened"
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3 # This copies your code into GitHub's server
+      
+      - name: Markdown Lint
+        uses: davidanson/markdownlint-cli2-action@v1
+        with:
+          globs: "**/*.md"
+
+      - name: Spell Check
+        uses: streetsidesoftware/cspell-action@v2
+        with:
+          files: "**/*.md"
+          
