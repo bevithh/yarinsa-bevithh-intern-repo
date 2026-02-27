@@ -23,7 +23,7 @@ I resolved the conflict locally using **VS Code**.
 - **Communication is Key:** In a real backend environment, I learned that before resolving a conflict, I should check with my team members to ensure I’m not overwriting critical logic.
 - **Pull Frequently:** To minimize large conflicts, it’s best to pull changes from `main` often so that my local branch stays closely aligned with the team's progress.
 
-# 3.3 Reflection
+## 3.3 Reflection
 
 **What does git bisect do?**
 git bisect is a debugging tool that uses a binary search to find the exact commit that introduced a bug. By marking a "good" version and a "bad" version, Git automatically checks out the middle commits for you to test, narrowing down the culprit quickly.
@@ -31,11 +31,11 @@ git bisect is a debugging tool that uses a binary search to find the exact commi
 **When would you use it in a real-world debugging situation?**
 I would use it in a large backend project when a feature that worked yesterday is suddenly broken today. If there have been dozens of commits since the last working version, git bisect saves me from having to manually check every single one to find where the logic failed.
 
-**How does it compare to manually reviewing commits?**
-Manually reviewing is fine for small changes, but it's inefficient for long histories. git bisect is mathematically faster finding a bug in 100 commits takes only about 7 steps, whereas manual review could take 100. It turns a "guessing game" into a structured process.
-=======
+## How does it compare to manually reviewing commits?
 
-# PR Reflection
+Manually reviewing is fine for small changes, but it's inefficient for long histories. git bisect is mathematically faster finding a bug in 100 commits takes only about 7 steps, whereas manual review could take 100. It turns a "guessing game" into a structured process.
+
+## PR Reflection
 
 _Why are PRs important in a team workflow?_
 PRs are the bridge between individual work and the main project. They act as a quality control step where teammates can catch bugs, suggest cleaner logic, and ensure everyone is on the same page. It prevents one person from accidentally breaking the app for everyone else.
@@ -48,7 +48,7 @@ Reviewing a public PR (like on the React or VS Code repos) showed me how develop
 
 this sentence is for issue #61
 
-# Reflection 3.2
+## Reflection 3.2
 
 _What makes a good commit message?_
 A good commit message is short, clear, and written in the imperative mood (e.g., Fix bug instead of Fixed bug). It usually starts with a category like feat: for new features, fix: for bug fixes, or docs: for documentation updates. This makes the history easy to scan at a glance.
@@ -59,27 +59,27 @@ It acts as a map for the team. When a teammate looks at the project history, the
 _How can poor commit messages cause issues later?_
 Poor messages like fixed stuff or final fix make it impossible to use tools like git blame or git log effectively. If a bug is discovered weeks later, a vague history makes it very difficult to track down exactly when and why the breaking change was introduced, leading to hours of wasted debugging time.
 
-# 3.4 Git Command Reflections
+## 3.4 Git Command Reflections
 
-## 1. git checkout main -- <file>
+### 1. git checkout main -- `<file>`
 
 - **What it does:** Restores a specific file to the state it is in on the main branch.
 - **Project Use:** Perfect for "undoing" mistakes in a specific file without needing to revert the entire project or branch.
 - **Surprise:** I was surprised that it doesn't just show me the file; it actively overwrites my local changes immediately.
 
-## 2. git cherry-pick <commit-hash>
+### 2. git cherry-pick `<commit-hash>`
 
 - **What it does:** Copies a specific commit from one branch to another.
 - **Project Use:** Great for pulling emergency fixes from a development branch into production without bringing along unfinished features.
 - **Surprise:** It creates a brand new commit hash on the current branch, even though the content is identical to the source.
 
-## 3. git log
+### 3. git log
 
 - **What it does:** Displays the history of commits.
 - **Project Use:** Essential for tracking progress and finding specific points in time to revert to.
 - **Surprise:** I didn't realize how much info is stored here—dates, emails, and full hashes. Using `git log --oneline` makes it much easier to read!
 
-## 4. git blame <file>
+### 4. git blame `<file>`
 
 - **What it does:** Shows which user changed which line of a file and when.
 - **Project Use:** Helps identify the right person to ask about a specific piece of logic.
@@ -87,7 +87,7 @@ Poor messages like fixed stuff or final fix make it impossible to use tools like
 
 ## 3.5 Branching & Workflow Reflections
 
-### Why avoid pushing directly to main?
+### Why avoid pushing directly to main
 
 Pushing to main is risky because it can introduce bugs into the stable version of the project. It forces the whole team to deal with your "work in progress," which can stall development if the build breaks.
 
@@ -95,11 +95,15 @@ Pushing to main is risky because it can introduce bugs into the stable version o
 
 Branches allow for isolated code reviews. Using a Pull Request, teammates can comment on specific lines of code and suggest improvements before that code ever touches the production-ready main branch.
 
-### Handling simultaneous edits (Merge Conflicts)
+### Handling simultaneous edits
 
 If two people edit the same file, Git triggers a 'Merge Conflict.' It doesn't pick a winner automatically; instead, it asks the developers to manually choose which changes to keep. This ensures that no one's work is accidentally overwritten.
 
 ## 3.6 Staging vs. Committing
+
+### What is the difference
+
+If two people edit the same file, Git triggers a 'Merge Conflict.' It doesn't pick a winner automatically; instead, it asks the developers to manually choose which changes to keep. This ensures that no one's work is accidentally overwritten.
 
 ### What is the difference?
 

@@ -3,14 +3,17 @@
 ## Core Concepts
 
 ### 1. Simplicity (KISS)
+
 * **Definition:** Keeping code as simple as possible by avoiding unnecessary complexity.
 * **Why it matters:** Simple code is easier to debug and less likely to hide "sneaky" bugs.
 
 ### 2. Readability
+
 * **Definition:** Writing code that is easy for humans to read and understand.
 * **Why it matters:** We spend much more time reading code than writing it. Using descriptive names like `is_payment_complete` is better than `status`.
 
 ### 3. Maintainability
+
 * **Definition:** Organizing code so that it can be easily updated or fixed in the future.
 * **Why it matters:** Good structure prevents "technical debt" where a small change causes the whole app to break.
 
@@ -19,9 +22,8 @@
 ## Code Refactoring Example
 
 ### Messy Code (The "Before")
+>
 > **Issues:** Vague variable names (`d`, `v`), "Magic Numbers" (0.05), and confusing nested if-statements.
-
-
 
 ```python
 def proc(d, v):
@@ -36,11 +38,13 @@ def proc(d, v):
     else:
         return 0
 ```
+
 Clean Code (The "After")
 
 Improvements: Used Guard Clauses to remove nesting and Constants to explain the numbers.
 
-# Constants make the logic easy to adjust later
+## Constants make the logic easy to adjust later
+
 ```python
 DISCOUNT_RATE = 0.05
 THRESHOLD = 100
@@ -59,25 +63,28 @@ def calculate_discounted_total(customer_type, total_amount):
     return total_amount
 ```
 
-
 ## 4.2 Variable & Function Naming
 
 ### What makes a good name?
+
 * **Intention-revealing:** It tells you why it exists and what it is used for.
 * **Pronounceable:** Avoid weird abbreviations like `usr_auth_str` (use `user_authentication_string` or `user_token`).
 * **Consistent:** If you use `fetch` for API calls, don't switch to `get` or `retrieve` halfway through the project.
 
 ### Issues caused by poor naming
+
 * **High Cognitive Load:** You have to keep a "map" in your head of what `x` and `y` mean.
 * **Bug Risk:** It's easy to pass the wrong data into a function if the names are vague.
 * **Maintenance Pain:** Future developers (including your future self) will waste time trying to "decipher" the code instead of improving it.
 
 ### Reflection on Refactoring
+
 Refactoring the code by renaming variables immediately made the logic "obvious." I no longer had to look at the math (`a * b`) to guess what the function did; the name `calculate_area` told me everything I needed to know before I even read the body of the function.
 
-# 4.3 Function Structure & Responsibility
+## 4.3 Function Structure & Responsibility
 
 ## Research: Single-Purpose Functions
+
 Best practices for writing "clean" functions revolve around the **Single Responsibility Principle (SRP)**.
 
 * **Do One Thing:** A function should have one reason to change. If it validates data, calculates a result, and saves to a database, it is doing too much.
@@ -90,6 +97,7 @@ Best practices for writing "clean" functions revolve around the **Single Respons
 ## Refactoring Example
 
 ### 1. The "Complex" Function (Before)
+>
 > **Issues:** Hard to test because it calculates math, formats strings, and handles errors in one block.
 
 ```python
@@ -111,9 +119,10 @@ def get_user_report(username, score, total_possible):
     return f"User: {username} | Score: {percentage}% | Result: {status}"
 ```
 
-2. The Refactored Functions (After)
+1. The Refactored Functions (After)
 
 Improvements: Decomposed into modular tools. Each piece can now be tested or reused independently.
+
 ```python
 def calculate_percentage(score, total):
     """Handles the math only."""
@@ -142,9 +151,10 @@ def get_user_report(username, score, total_possible):
     return format_report_string(username, percent, result_status)
 ```
 
-# 4.4 Don't Repeat Yourself (DRY)
+## 4.4 Don't Repeat Yourself (DRY)
 
 ## Research: The DRY Principle
+
 The DRY principle is about reducing repetition. Instead of having the same logic scattered across multiple places, you consolidate it into a single function or class.
 
 * **Maintainability:** If the logic needs to change, you only update it in one place.
@@ -156,6 +166,7 @@ The DRY principle is about reducing repetition. Instead of having the same logic
 ## 4.4 Refactoring Example
 
 ### Repetitive Code (The "Before")
+
 Issues: The greeting logic is duplicated for every time of day. If I wanted to change "Hello" to "Welcome," I would have to edit three different lines.
 
 ```python
@@ -171,21 +182,24 @@ def greet_user(name, time_of_day):
 Refactored Code (The "After")
 
 Improvements: Extracted the repetitive greeting string into a single line. The code is now "DRY."
+
 ```python
 def greet_user(name, time_of_day):
     # The greeting logic is now defined only once
     greeting = f"Hello, {name}! Good {time_of_day}."
     print(greeting)
 ```
+
 **What were the issues with duplicated code?**
 Duplicated code makes the file longer than it needs to be and creates a maintenance headache. If the greeting format needed to change (e.g., adding an exclamation mark), I would have had to make the same change in three different places, increasing the risk of a typo.
 
 **How did refactoring improve maintainability?**
 Refactoring simplified the function and made it more flexible. Now, if the team decides to support a new time of day like "night," I don't need to add a whole new elif block with a repeated print statement; the existing logic already handles it.
 
-# 4.5 Comments & Documentation
+## 4.5 Comments & Documentation
 
 ## Research: Best Practices
+
 Comments should be used sparingly. The primary goal is to write code so clear that it documents itself, using comments only to provide context that the code cannot.
 
 * **The 'Why', not the 'What':** Comments should explain the reasoning behind a complex logic block, not describe the syntax.
@@ -200,7 +214,8 @@ Comments should be added when the logic is non-intuitive or involves a specific 
 **When should you avoid comments and instead improve the code?**
 If you feel the need to explain what a variable represents or what a simple loop is doing, you should usually rename the variable or extract the loop into a well-named function instead. "Code should tell you how; comments should tell you why."
 
-# 4.6 Handling Errors & Edge Cases
+## 4.6 Handling Errors & Edge Cases
+
 A **Guard Clause** is a snippet of code at the beginning of a function that checks for invalid conditions and exits immediately. This avoids "Arrow Code" (deeply nested if statements) and keeps the "happy path" of your logic at the lowest indentation level.
 
 **Strategies for Edge Cases:**
@@ -213,7 +228,7 @@ Range Validation: If a function calculates age, ensure the input isn't -5 or 200
 
 Try-Catch Blocks: Use these for operations that are outside your control, like API calls or file system access.
 
-**The Original (Brittle) Code**
+## The Original (Brittle) Code
 
 This function assumes the input is always perfect. If prices is null or empty, it crashes.
 
@@ -228,7 +243,8 @@ public double CalculateAveragePrice(List<double> prices)
     return total / prices.Count; // Potential Division by Zero error!
 }
 ```
-**The Refactored (Robust) Code**
+
+## The Refactored (Robust) Code
 
 Using Guard Clauses and input validation:
 
@@ -259,14 +275,16 @@ public double CalculateAveragePrice(List<double> prices)
     return total / prices.Count;
 }
 ```
+
 **What was the issue with the original code?**
 The original code lacked "defensive programming." It operated on the "happy path" assumption. If the data source failed or returned an empty set, the application would throw an unhandled exception (like DivideByZeroException), potentially crashing the entire service.
 
 **How does handling errors improve reliability?**
 It makes the system predictable. Instead of a crash, the system provides a meaningful error message or a safe default value. This ensures that one small failure in a minor function doesn't cascade into a total system failure.
 
-# 4.7 Refactoring Code for Simplicity
-**The "Before" (Overly Complicated)**
+## 4.7 Refactoring Code for Simplicity
+
+## The "Before" (Overly Complicated)
 
 This code is hard to read because of "Arrow Code" (heavy nesting) and unclear logic.
 
@@ -295,7 +313,8 @@ public decimal GetDiscount(Customer customer, decimal price)
     return result;
 }
 ```
-**The "After" (Refactored)**
+
+## The "After" (Refactored)
 
 We use Guard Clauses and Extract Method logic to make it readable at a glance.
 
@@ -320,13 +339,15 @@ private decimal CalculateSilverDiscount(decimal price)
     return price > 100 ? price * 0.1m : price * 0.05m;
 }
 ```
+
 **What made the original code complex?**
 The original code suffered from Deep Nesting. To understand the result, a developer had to keep track of four different levels of if statements simultaneously. It also used "Magic Numbers" (like 0.1m) without context, making the business logic opaque.
 
 **How did refactoring improve it?**
 Refactoring reduced the Cyclomatic Complexity. By using Guard Clauses, the "happy path" is clear and flat. By extracting logic into smaller methods, the code now "reads like a book," where the method names explain what is happening before you even look at the math.
 
-# 4.8 Identifying and fixing code smells
+## 4.8 Identifying and fixing code smells
+
 **What smells did you find?**
 Focus on Deeply Nested Conditionals and Magic Numbers. These are the most common "internship-level" smells that clutter backend logic.
 
@@ -336,14 +357,16 @@ By removing nesting, the "happy path" (the successful execution of the code) is 
 **How does avoiding smells make debugging easier?**
 When code is modular and clean, the scope of a bug is smaller. If a calculation is wrong, you look at the one TaxCalculator class rather than searching through five different files for duplicate logic.
 
-# 4.9 Writing Unit Tests for Clean Code
+## 4.9 Writing Unit Tests for Clean Code
+
 **How do unit tests help keep code clean?**
 Tests act as a "living specification." They prevent Regression (where fixing one bug creates another). Because tests require you to pass specific inputs into a function, they naturally discourage "God Objects" and encourage Single Responsibility.
 
 **What issues did you find while testing?**
 You might notice that a function relies on a global variable or a database connection, making it "impure" and hard to test. This usually signals that the function needs to be refactored to accept those dependencies as arguments instead.
 
-# 4.10 Code Formatting & Style Guides
+## 4.10 Code Formatting & Style Guides
+
 **Why is code formatting important?**
 It eliminates "bike-shedding" (arguing over minor details). It ensures the codebase remains professional and uniform, which is critical for scaling backend systems.
 
