@@ -4,7 +4,7 @@ The controller's role is to act as the entry point for incoming HTTP requests. I
 
 ## How should business logic be separated from the controller?
 
-Business logic should be encapsulated within Services (Providers). The controller should call methods on the injected service to perform data operations. For example, a controller might receive a "User ID," but the service is what actually goes to the database to find that user.
+Business logic should be entirely encapsulated within Services (Providers) rather than the controller. The controller should remain "thin," acting only as a coordinator that receives the request and then calls a method on an injected service to perform the actual work. For example, in our habits app, the controller detects a DELETE request, but the service is what actually manipulates the array.
 
 ## Why is it important to use services instead of handling logic inside controllers?
 
