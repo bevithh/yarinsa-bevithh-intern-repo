@@ -1,16 +1,21 @@
 services:
   db:
-    image: postgres:16 # Uses a stable, modern version
-    container_name: focus_bear_db
+    image: postgres:15
+    container_name: focus-bear-db
     restart: always
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
       POSTGRES_DB: focus_bear
     ports:
-      - "5432:5432" # Maps port 5432 on your Mac to 5432 in the container
-    volumes:
-      - postgres_data:/var/lib/postgresql/data # Persists your data
+      - "5432:5432"
 
-volumes:
-  postgres_data: # Defines the managed volume
+  api:
+    build: .
+    container_name: focus-bear-api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    env_file:
+      - .env
