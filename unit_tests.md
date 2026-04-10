@@ -12,10 +12,18 @@ The most challenging part is often testing **Asynchronous Thunks**. Because thun
 * **Dependencies:** Component tests often require wrapping the component in a `<Provider>`, whereas Reducer tests can be run by simply importing the reducer function.
 
 ---
+# Unit Testing Reflection: Mocking API Calls
 
-## Task Checklist
-- [x] Researched Redux Toolkit testing patterns
-- [x] Created/Identified a Redux Slice
-- [x] Wrote unit tests for Reducers
-- [x] Verified tests pass using `npm test`
-- [x] Pushed test files to GitHub
+## 1. Why is it important to mock API calls in tests?
+Mocking API calls is essential for several reasons:
+* **Speed:** Real network requests take time. Mocks run locally and nearly instantaneously, allowing for a faster CI/CD pipeline.
+* **Reliability (Determinism):** External APIs can go down or return different data over time. Mocking ensures the test environment is controlled and results are consistent.
+* **Cost & Side Effects:** Some APIs charge per request. Additionally, mocking prevents tests from accidentally creating "garbage" data in a production or staging database.
+* **Isolation:** It allows us to test the component's logic (how it handles data) rather than testing whether the API itself works.
+
+## 2. What are some common pitfalls when testing asynchronous code?
+* **Not using `await` or `waitFor`:** Tests often finish executing before the asynchronous API call resolves, leading to "false negatives" where tests pass even if the code is broken.
+* **Leaking Mocks:** If you don't clear mocks between tests using `jest.clearAllMocks()`, the call counts (e.g., `toHaveBeenCalledTimes`) might carry over from previous tests, causing confusing failures.
+* **Improper Error Handling:** Forgetting to mock a "rejected" promise to test how the UI handles API failures.
+* **Testing Implementation Details:** Focusing too much on *how* axios was called rather than *what* the user sees on the screen after the data arrives.
+---
