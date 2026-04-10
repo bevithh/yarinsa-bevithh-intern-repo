@@ -27,3 +27,14 @@ Mocking API calls is essential for several reasons:
 * **Improper Error Handling:** Forgetting to mock a "rejected" promise to test how the UI handles API failures.
 * **Testing Implementation Details:** Focusing too much on *how* axios was called rather than *what* the user sees on the screen after the data arrives.
 ---
+# Unit Testing Reflection: React Testing Library (RTL)
+
+## 1. What are the benefits of using React Testing Library instead of testing implementation details?
+* **Refactor-Resistant Tests:** When you test behavior (what the user sees) rather than implementation (state/internal names), your tests won't break if you rename a variable or switch from a Class component to Hooks.
+* **Improved Accessibility:** By using queries like `getByRole` or `getByLabelText`, you are forced to write accessible HTML. If a test can't "find" your button, a screen reader likely can't either.
+* **Confidence:** It validates that the feature actually works for the end-user, giving higher confidence that the UI is functional.
+
+## 2. What challenges did you encounter when simulating user interaction?
+* **Asynchronous Updates:** React state updates are asynchronous. Sometimes assertions run before the DOM has finished updating, requiring the use of `await findBy*` or `waitFor`.
+* **Events vs. User Actions:** Understanding the difference between `fireEvent` (dispatches a DOM event) and `userEvent` (simulates a full interaction like hover -> focus -> click). `userEvent` is more realistic but requires `async/await`.
+* **Environment Setup:** Ensuring `jest-dom` is imported so that matchers like `.toBeInTheDocument()` or `.toHaveTextContent()` work correctly.
