@@ -38,3 +38,17 @@ Mocking API calls is essential for several reasons:
 * **Asynchronous Updates:** React state updates are asynchronous. Sometimes assertions run before the DOM has finished updating, requiring the use of `await findBy*` or `waitFor`.
 * **Events vs. User Actions:** Understanding the difference between `fireEvent` (dispatches a DOM event) and `userEvent` (simulates a full interaction like hover -> focus -> click). `userEvent` is more realistic but requires `async/await`.
 * **Environment Setup:** Ensuring `jest-dom` is imported so that matchers like `.toBeInTheDocument()` or `.toHaveTextContent()` work correctly.
+---
+# Unit Testing Reflection: Introduction to Jest
+
+## 1. Why is automated testing important in software development?
+Automated testing is vital for maintaining a healthy codebase, especially in collaborative environments:
+* **Regression Prevention:** It ensures that new features or bug fixes don't accidentally break existing functionality (the "Focus Bear" features people rely on daily).
+* **Documentation:** Tests act as documentation; they show other developers exactly how a function or component is expected to behave.
+* **Refactoring Confidence:** Developers can clean up or optimize code knowing that if they change the logic incorrectly, the tests will catch it immediately.
+* **Efficiency:** While writing tests takes time upfront, it saves hours of manual debugging and QA testing in the long run.
+
+## 2. What did you find challenging when writing your first Jest test?
+* **Thinking of Edge Cases:** It can be difficult to move beyond the "happy path" (standard input) to consider things like null values, zeros, or unexpected data types.
+* **Setup and Configuration:** Understanding how Jest interacts with TypeScript and ensuring the file paths are correctly mapped in the `spec` files.
+* **The "Arrange-Act-Assert" Pattern:** Adjusting to the structure of setting up data, executing the function, and then asserting the results in a clean, readable way.
